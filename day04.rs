@@ -9,7 +9,6 @@ fn main() {
     f.read_to_string(&mut contents).expect("Could not read file!");
 
     for line in contents.lines() {
-        // let l: Vec<String> = line.split(" ").map(|s| s.to_string()).collect();
         let l: Vec<Vec<u8>> = line.split(" ").map(|s| s.as_bytes().to_vec()).collect();
         lines.push(l);
     }
