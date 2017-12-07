@@ -1,11 +1,7 @@
-use std::fs::File;
-use std::io::Read;
+use util;
 
 pub fn solve() {
-    let mut f = File::open("../input/day01.txt").expect("File not found!");
-    let mut contents = String::new();
-
-    f.read_to_string(&mut contents).expect("Could not read file!");
+    let contents = util::read_input(1);
 
     let data = contents.lines().rev().last().unwrap();
     let values: Vec<u32> = data.chars().map(|c| c.to_digit(10).unwrap()).collect();

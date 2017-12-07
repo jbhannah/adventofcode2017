@@ -1,6 +1,5 @@
 use std::collections::HashMap;
-use std::fs::File;
-use std::io::Read;
+use util;
 
 enum Direction {
     UP,
@@ -10,11 +9,7 @@ enum Direction {
 }
 
 pub fn solve() {
-    let mut f = File::open("../input/day03.txt").expect("File not found!");
-    let mut contents = String::new();
-
-    f.read_to_string(&mut contents).expect("Could not read file!");
-
+    let contents = util::read_input(3);
     let data = contents.lines().rev().last().unwrap();
     let input: u32 = data.parse::<u32>().unwrap();
 

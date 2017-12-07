@@ -1,12 +1,8 @@
-use std::fs::File;
-use std::io::Read;
+use util;
 
 pub fn solve() {
-    let mut f = File::open("../input/day05.txt").expect("File not found!");
-    let mut contents = String::new();
+    let contents = util::read_input(5);
     let mut instrs: Vec<i32> = Vec::new();
-
-    f.read_to_string(&mut contents).expect("Could not read file!");
 
     for line in contents.lines() {
         let i = line.parse::<i32>();
