@@ -26,7 +26,7 @@ fn main() {
             4 => day04::solve(),
             5 => day05::solve(),
             6 => day06::solve(),
-            _ => println!("No day between 1-6 specified!")
+            _ => println!("No day between 1-6 specified!"),
         };
     }
 }

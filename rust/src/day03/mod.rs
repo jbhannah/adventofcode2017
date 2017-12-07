@@ -5,7 +5,7 @@ enum Direction {
     UP,
     LEFT,
     DOWN,
-    RIGHT
+    RIGHT,
 }
 
 pub fn solve() {
@@ -80,14 +80,18 @@ fn steps_to_addr(input: u32) -> u32 {
     return (x.abs() + y.abs()) as u32;
 }
 
-fn can_turn_left(coords: &(i32, i32), direction: &Direction, memory: &HashMap<(i32, i32), u32>) -> bool {
+fn can_turn_left(
+    coords: &(i32, i32),
+    direction: &Direction,
+    memory: &HashMap<(i32, i32), u32>,
+) -> bool {
     let (x, y): (i32, i32) = *coords;
 
     let left_coords: (i32, i32) = match *direction {
         Direction::UP => (x - 1, y),
         Direction::LEFT => (x, y - 1),
         Direction::DOWN => (x + 1, y),
-        Direction::RIGHT => (x, y + 1)
+        Direction::RIGHT => (x, y + 1),
     };
 
     return !memory.contains_key(&left_coords);
@@ -98,7 +102,7 @@ fn turn_left(direction: Direction) -> Direction {
         Direction::UP => Direction::LEFT,
         Direction::LEFT => Direction::DOWN,
         Direction::DOWN => Direction::RIGHT,
-        Direction::RIGHT => Direction::UP
+        Direction::RIGHT => Direction::UP,
     }
 }
 
@@ -109,6 +113,6 @@ fn move_forward(coords: &(i32, i32), direction: &Direction) -> (i32, i32) {
         Direction::UP => (x, y + 1),
         Direction::LEFT => (x - 1, y),
         Direction::DOWN => (x, y - 1),
-        Direction::RIGHT => (x + 1, y)
+        Direction::RIGHT => (x + 1, y),
     }
 }

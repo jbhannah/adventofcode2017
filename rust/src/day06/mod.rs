@@ -6,7 +6,9 @@ pub fn solve() {
 
     let mut cycles = 0;
     let mut history: Vec<Vec<u32>> = Vec::new();
-    let mut banks: Vec<u32> = data.split("\t").map(|n| n.parse::<u32>().unwrap()).collect();
+    let mut banks: Vec<u32> = data.split("\t")
+        .map(|n| n.parse::<u32>().unwrap())
+        .collect();
     history.push(banks.clone());
 
     loop {

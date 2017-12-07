@@ -12,20 +12,22 @@ pub fn solve() {
     }
 
     let inc_after_access = |i: i32| i + 1;
-    let inc_or_dec_after_access = |i: i32| {
-        if i < 3 {
-            return i + 1;
-        } else {
-            return i - 1;
-        }
+    let inc_or_dec_after_access = |i: i32| if i < 3 {
+        return i + 1;
+    } else {
+        return i - 1;
     };
 
     println!("{}", steps_to_escape(instrs.clone(), inc_after_access));
-    println!("{}", steps_to_escape(instrs.clone(), inc_or_dec_after_access));
+    println!(
+        "{}",
+        steps_to_escape(instrs.clone(), inc_or_dec_after_access)
+    );
 }
 
 fn steps_to_escape<F>(mut instrs: Vec<i32>, oper: F) -> u32
-where F: Fn(i32) -> i32
+where
+    F: Fn(i32) -> i32,
 {
     let mut steps = 0;
     let mut instr: i32 = 0;

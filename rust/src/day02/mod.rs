@@ -5,7 +5,9 @@ pub fn solve() {
     let mut lines: Vec<Vec<u32>> = Vec::new();
 
     for line in contents.lines() {
-        let mut l: Vec<u32> = line.split("\t").map(|n| n.parse::<u32>().unwrap()).collect();
+        let mut l: Vec<u32> = line.split("\t")
+            .map(|n| n.parse::<u32>().unwrap())
+            .collect();
         l.sort();
         lines.push(l);
     }
