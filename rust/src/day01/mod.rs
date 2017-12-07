@@ -1,8 +1,8 @@
 use std::fs::File;
 use std::io::Read;
 
-fn main() {
-    let mut f = File::open("day01.txt").expect("File not found!");
+pub fn solve() {
+    let mut f = File::open("../input/day01.txt").expect("File not found!");
     let mut contents = String::new();
 
     f.read_to_string(&mut contents).expect("Could not read file!");

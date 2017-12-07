@@ -9,8 +9,8 @@ enum Direction {
     RIGHT
 }
 
-fn main() {
-    let mut f = File::open("day03.txt").expect("File not found!");
+pub fn solve() {
+    let mut f = File::open("../input/day03.txt").expect("File not found!");
     let mut contents = String::new();
 
     f.read_to_string(&mut contents).expect("Could not read file!");

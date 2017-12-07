@@ -1,8 +1,8 @@
 use std::fs::File;
 use std::io::Read;
 
-fn main() {
-    let mut f = File::open("day04.txt").expect("File not found!");
+pub fn solve() {
+    let mut f = File::open("../input/day04.txt").expect("File not found!");
     let mut contents = String::new();
     let mut lines: Vec<Vec<Vec<u8>>> = Vec::new();
 
