@@ -1,3 +1,7 @@
+#[macro_use]
+extern crate lazy_static;
+extern crate regex;
+
 use std::env;
 use std::process;
 
@@ -9,6 +13,7 @@ mod day03;
 mod day04;
 mod day05;
 mod day06;
+mod day07;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -26,6 +31,7 @@ fn main() {
             4 => day04::solve(),
             5 => day05::solve(),
             6 => day06::solve(),
+            7 => day07::solve(),
             _ => println!("No day between 1-6 specified!"),
         };
     }
