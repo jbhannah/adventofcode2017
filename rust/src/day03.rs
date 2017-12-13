@@ -8,13 +8,15 @@ enum Direction {
     RIGHT,
 }
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(3);
     let data = contents.lines().rev().last().unwrap();
     let input: u32 = data.parse::<u32>().unwrap();
 
-    println!("{}", steps_to_addr(input));
-    println!("{}", next_largest(input));
+    return (
+        steps_to_addr(input).to_string(),
+        next_largest(input).to_string(),
+    );
 }
 
 fn next_largest(input: u32) -> u32 {
@@ -114,5 +116,17 @@ fn move_forward(coords: &(i32, i32), direction: &Direction) -> (i32, i32) {
         Direction::LEFT => (x - 1, y),
         Direction::DOWN => (x, y - 1),
         Direction::RIGHT => (x + 1, y),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day03() {
+        let (part1, part2) = solve();
+        assert_eq!(552.to_string(), part1);
+        assert_eq!(330785.to_string(), part2);
     }
 }

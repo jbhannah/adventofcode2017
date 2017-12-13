@@ -1,6 +1,6 @@
 use util;
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(4);
     let mut lines: Vec<Vec<Vec<u8>>> = Vec::new();
 
@@ -10,8 +10,7 @@ pub fn solve() {
     }
 
     let (uniq, anag) = count_valid(&lines);
-    println!("{}", uniq);
-    println!("{}", anag);
+    return (uniq.to_string(), anag.to_string());
 }
 
 fn count_valid(lines: &Vec<Vec<Vec<u8>>>) -> (u32, u32) {
@@ -55,4 +54,16 @@ fn is_anag(line: &Vec<Vec<u8>>) -> bool {
     }
 
     return is_uniq(&l);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day04() {
+        let (part1, part2) = solve();
+        assert_eq!(383.to_string(), part1);
+        assert_eq!(265.to_string(), part2);
+    }
 }

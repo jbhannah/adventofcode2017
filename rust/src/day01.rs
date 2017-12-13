@@ -1,13 +1,14 @@
 use util;
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(1);
 
     let data = contents.lines().rev().last().unwrap();
     let values: Vec<u32> = data.chars().map(|c| c.to_digit(10).unwrap()).collect();
 
-    println!("{}", sum1(values.clone()));
-    println!("{}", sum2(values.clone()));
+    let s1 = sum1(values.clone());
+    let s2 = sum2(values.clone());
+    return (s1.to_string(), s2.to_string());
 }
 
 fn sum1(values: Vec<u32>) -> u32 {
@@ -42,4 +43,16 @@ fn sum2(values: Vec<u32>) -> u32 {
     }
 
     return sum;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day01() {
+        let (part1, part2) = solve();
+        assert_eq!(1228.to_string(), part1);
+        assert_eq!(1238.to_string(), part2);
+    }
 }

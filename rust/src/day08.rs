@@ -2,7 +2,7 @@ use regex::Regex;
 use std::collections::HashMap;
 use util;
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(8);
     let mut regs: HashMap<String, i32> = HashMap::new();
     let mut max: i32 = i32::min_value();
@@ -15,8 +15,7 @@ pub fn solve() {
         }
     }
 
-    println!("{}", get_max(&regs));
-    println!("{}", max);
+    return (get_max(&regs).to_string(), max.to_string());
 }
 
 fn do_instr(instr: String, regs: &mut HashMap<String, i32>) -> Option<i32> {
@@ -77,4 +76,16 @@ fn get_max(regs: &HashMap<String, i32>) -> i32 {
     }
 
     return max;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day08() {
+        let (part1, part2) = solve();
+        assert_eq!(7296.to_string(), part1);
+        assert_eq!(8186.to_string(), part2);
+    }
 }

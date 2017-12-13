@@ -1,6 +1,6 @@
 use util;
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(5);
     let mut instrs: Vec<i32> = Vec::new();
 
@@ -18,10 +18,9 @@ pub fn solve() {
         return i - 1;
     };
 
-    println!("{}", steps_to_escape(instrs.clone(), inc_after_access));
-    println!(
-        "{}",
-        steps_to_escape(instrs.clone(), inc_or_dec_after_access)
+    return (
+        steps_to_escape(instrs.clone(), inc_after_access).to_string(),
+        steps_to_escape(instrs.clone(), inc_or_dec_after_access).to_string(),
     );
 }
 
@@ -46,4 +45,16 @@ where
     }
 
     return steps;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day05() {
+        let (part1, part2) = solve();
+        assert_eq!(391540.to_string(), part1);
+        assert_eq!(30513679.to_string(), part2);
+    }
 }

@@ -3,7 +3,6 @@ extern crate lazy_static;
 extern crate regex;
 
 use std::env;
-use std::process;
 
 mod util;
 
@@ -19,13 +18,12 @@ mod day08;
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        println!("No day specified!");
-        process::exit(1);
+        panic!("No day specified!");
     }
     let day = &args[1].parse::<u32>();
 
     if let Ok(day) = *day {
-        match day {
+        let result: (String, String) = match day {
             1 => day01::solve(),
             2 => day02::solve(),
             3 => day03::solve(),
@@ -34,7 +32,9 @@ fn main() {
             6 => day06::solve(),
             7 => day07::solve(),
             8 => day08::solve(),
-            _ => println!("No day between 1-6 specified!"),
+            _ => panic!("No day between 1 and 8 specified!"),
         };
+
+        println!("{:?}", result);
     }
 }

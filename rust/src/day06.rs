@@ -1,6 +1,6 @@
 use util;
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(6);
     let data = contents.lines().rev().last().unwrap();
 
@@ -31,9 +31,7 @@ pub fn solve() {
 
         if history.contains(&banks) {
             let len = history.iter().position(|&ref x| x == &banks).unwrap();
-            println!("{}", cycles);
-            println!("{}", cycles - len);
-            break;
+            return (cycles.to_string(), (cycles - len as u32).to_string());
         }
 
         history.push(banks.clone());
@@ -50,4 +48,16 @@ fn max_index(banks: &Vec<u32>) -> usize {
     }
 
     return i;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day06() {
+        let (part1, part2) = solve();
+        assert_eq!(12841.to_string(), part1);
+        assert_eq!(8038.to_string(), part2);
+    }
 }

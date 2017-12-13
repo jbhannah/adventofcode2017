@@ -1,6 +1,6 @@
 use util;
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(2);
     let mut lines: Vec<Vec<u32>> = Vec::new();
 
@@ -12,8 +12,7 @@ pub fn solve() {
         lines.push(l);
     }
 
-    println!("{}", checksum(&lines));
-    println!("{}", divisum(&lines));
+    return (checksum(&lines).to_string(), divisum(&lines).to_string());
 }
 
 fn checksum(lines: &Vec<Vec<u32>>) -> u32 {
@@ -50,4 +49,16 @@ fn linediv(line: &Vec<u32>) -> u32 {
     }
 
     return 0;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day02() {
+        let (part1, part2) = solve();
+        assert_eq!(36766.to_string(), part1);
+        assert_eq!(261.to_string(), part2);
+    }
 }

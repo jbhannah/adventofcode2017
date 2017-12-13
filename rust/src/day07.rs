@@ -15,7 +15,7 @@ impl Leaf {
     }
 }
 
-pub fn solve() {
+pub fn solve() -> (String, String) {
     let contents = util::read_input(7);
     let mut tree: HashMap<String, Leaf> = HashMap::new();
 
@@ -52,10 +52,8 @@ pub fn solve() {
     }
 
     let bottom = find_bottom(&tree);
-    println!("{}", bottom);
-
     let (weight, _) = balance_weights(&tree, &bottom);
-    println!("{}", weight);
+    return (bottom, weight.to_string());
 }
 
 fn find_bottom(tree: &HashMap<String, Leaf>) -> String {
@@ -102,5 +100,17 @@ fn balance_weights(tree: &HashMap<String, Leaf>, bottom: &String) -> (i32, i32) 
 
         let weight: i32 = weights.iter().sum();
         return (b.weight, weight);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day07() {
+        let (part1, part2) = solve();
+        assert_eq!("fbgguv".to_string(), part1);
+        assert_eq!(1864.to_string(), part2);
     }
 }
