@@ -14,6 +14,7 @@ mod day05;
 mod day06;
 mod day07;
 mod day08;
+mod day09;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -32,7 +33,8 @@ fn main() {
             6 => day06::solve(),
             7 => day07::solve(),
             8 => day08::solve(),
-            _ => panic!("No day between 1 and 8 specified!"),
+            9 => day09::solve(),
+            _ => panic!("No day between 1 and 9 specified!"),
         };
 
         println!("{:?}", result);
